@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bue64lvj7nprm"]
+
+[ext_resource type="Script" path="res://Scripts/AppManager.gd" id="1_mekau"]
+
+[node name="Root" type="Node"]
+script = ExtResource("1_mekau")
