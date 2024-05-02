@@ -1,0 +1,99 @@
+[gd_scene load_steps=7 format=3 uid="uid://b1ir6qxyx0bc"]
+
+[ext_resource type="Script" path="res://Scripts/Game/GameScene.gd" id="1_5uuef"]
+[ext_resource type="Script" path="res://Scripts/Menus/Pause.gd" id="2_dslxd"]
+[ext_resource type="Theme" uid="uid://ca6qwx4i24j7s" path="res://Resources/MainTheme.tres" id="3_3k6ah"]
+[ext_resource type="Script" path="res://Scripts/Game/GameManager.gd" id="4_vpwgo"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_1wqv5"]
+
+[sub_resource type="Environment" id="Environment_jfl3x"]
+background_mode = 1
+background_color = Color(0, 0.807843, 0.905882, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.47451, 0.47451, 0.47451, 1)
+tonemap_mode = 2
+
+[node name="GameScene" type="Node"]
+script = ExtResource("1_5uuef")
+
+[node name="Pause" type="CanvasLayer" parent="."]
+layer = 30
+visible = false
+script = ExtResource("2_dslxd")
+
+[node name="c" type="Control" parent="Pause"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_3k6ah")
+
+[node name="Panel" type="Panel" parent="Pause/c"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -248.0
+offset_top = -302.0
+offset_right = 248.0
+offset_bottom = 302.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Resume" type="Button" parent="Pause/c/Panel"]
+layout_mode = 0
+offset_left = 114.0
+offset_top = 25.0
+offset_right = 386.0
+offset_bottom = 142.0
+text = "RESUME"
+
+[node name="Options" type="Button" parent="Pause/c/Panel"]
+layout_mode = 0
+offset_left = 107.0
+offset_top = 253.0
+offset_right = 379.0
+offset_bottom = 370.0
+text = "OPTIONS"
+
+[node name="MainMenu" type="Button" parent="Pause/c/Panel"]
+layout_mode = 0
+offset_left = 114.0
+offset_top = 444.0
+offset_right = 386.0
+offset_bottom = 561.0
+text = "MAIN MENU
+"
+
+[node name="Game" type="Node" parent="."]
+process_mode = 1
+script = ExtResource("4_vpwgo")
+
+[node name="World" type="Node3D" parent="Game"]
+
+[node name="Tile" type="MeshInstance3D" parent="Game/World"]
+mesh = SubResource("BoxMesh_1wqv5")
+
+[node name="Cam" type="Camera3D" parent="Game/World"]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 1.34354, 2.16853, 1.78144)
+projection = 1
+size = 5.0
+
+[node name="Light" type="DirectionalLight3D" parent="Game/World"]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Env" type="WorldEnvironment" parent="Game/World"]
+environment = SubResource("Environment_jfl3x")
+
+[node name="HUD" type="CanvasLayer" parent="Game"]
+layer = 5
+
+[connection signal="pressed" from="Pause/c/Panel/Resume" to="Pause" method="ResumeButton"]
+[connection signal="pressed" from="Pause/c/Panel/Options" to="Pause" method="OptionsButton"]
+[connection signal="pressed" from="Pause/c/Panel/MainMenu" to="Pause" method="MenuButton"]

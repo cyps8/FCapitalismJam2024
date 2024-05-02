@@ -1,6 +1,78 @@
-[gd_scene load_steps=2 format=3 uid="uid://bue64lvj7nprm"]
+[gd_scene load_steps=6 format=3 uid="uid://bue64lvj7nprm"]
 
-[ext_resource type="Script" path="res://Scripts/AppManager.gd" id="1_mekau"]
+[ext_resource type="Script" path="res://Scripts/Menus/AppManager.gd" id="1_mekau"]
+[ext_resource type="Script" path="res://Scripts/Menus/OptionsMenu.gd" id="2_brntj"]
+[ext_resource type="PackedScene" uid="uid://b1ir6qxyx0bc" path="res://Nodes/Scenes/game.tscn" id="2_tm54f"]
+[ext_resource type="PackedScene" uid="uid://o7vmref3t2tq" path="res://Nodes/Scenes/main_menu.tscn" id="3_x786t"]
+[ext_resource type="Theme" uid="uid://ca6qwx4i24j7s" path="res://Resources/MainTheme.tres" id="5_hpf0p"]
 
 [node name="Root" type="Node"]
+process_mode = 3
 script = ExtResource("1_mekau")
+gameScene = ExtResource("2_tm54f")
+menuScene = ExtResource("3_x786t")
+
+[node name="OptionsMenu" type="CanvasLayer" parent="."]
+layer = 40
+script = ExtResource("2_brntj")
+
+[node name="c" type="Control" parent="OptionsMenu"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_hpf0p")
+
+[node name="Panel" type="Panel" parent="OptionsMenu/c"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -328.5
+offset_right = 360.0
+offset_bottom = 328.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Return" type="Button" parent="OptionsMenu/c/Panel"]
+layout_mode = 0
+offset_left = 214.0
+offset_top = 558.0
+offset_right = 492.0
+offset_bottom = 622.0
+text = "RETURN"
+
+[node name="LoadingScreen" type="CanvasLayer" parent="."]
+layer = 50
+
+[node name="Black" type="ColorRect" parent="LoadingScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="LoadingScreen/Black"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -107.0
+offset_top = -92.0
+offset_right = 107.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("5_hpf0p")
+text = "LOADING"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="OptionsMenu/c/Panel/Return" to="OptionsMenu" method="ReturnButton"]
