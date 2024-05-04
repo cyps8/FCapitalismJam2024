@@ -23,7 +23,7 @@ mesh = ExtResource("2_b2jcg")
 surface_material_override/0 = SubResource("StandardMaterial3D_almwo")
 
 [node name="GrassPlane2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.927106, 0, 0.0120786)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0138612, 0, 0.0105931)
 mesh = ExtResource("2_b2jcg")
 surface_material_override/0 = SubResource("ShaderMaterial_dhtby")
 
