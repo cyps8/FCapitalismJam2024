@@ -6,6 +6,16 @@
 [ext_resource type="PackedScene" uid="uid://o7vmref3t2tq" path="res://Nodes/Scenes/main_menu.tscn" id="3_x786t"]
 [ext_resource type="Theme" uid="uid://ca6qwx4i24j7s" path="res://Resources/MainTheme.tres" id="5_hpf0p"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_almwo"]
+transparency = 1
+albedo_texture = ExtResource("3_w5p4p")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dhtby"]
+render_priority = 0
+shader = ExtResource("4_grkcj")
+shader_parameter/start_angle = 0.0
+shader_parameter/grass_texture = ExtResource("3_w5p4p")
+
 [node name="Root" type="Node"]
 process_mode = 3
 script = ExtResource("1_mekau")
