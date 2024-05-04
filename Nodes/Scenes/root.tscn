@@ -12,6 +12,7 @@ albedo_texture = ExtResource("3_w5p4p")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dhtby"]
 render_priority = 0
 shader = ExtResource("4_grkcj")
+shader_parameter/start_angle = 0.0
 shader_parameter/grass_texture = ExtResource("3_w5p4p")
 
 [node name="Root" type="Node"]
@@ -23,7 +24,7 @@ mesh = ExtResource("2_b2jcg")
 surface_material_override/0 = SubResource("StandardMaterial3D_almwo")
 
 [node name="GrassPlane2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0138612, 0, 0.0105931)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0138612, 0, -1.74171)
 mesh = ExtResource("2_b2jcg")
 surface_material_override/0 = SubResource("ShaderMaterial_dhtby")
 
