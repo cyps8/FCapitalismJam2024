@@ -1,17 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://6l6ywq8ju052"]
+[gd_scene load_steps=6 format=3 uid="uid://6l6ywq8ju052"]
 
 [ext_resource type="Script" path="res://Scripts/Game/Tile.gd" id="1_64qnr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gkaye"]
+resource_local_to_scene = true
 albedo_color = Color(0.239216, 0.454902, 0.239216, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_1wqv5"]
+resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_gkaye")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tateg"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_dpk3h"]
+radius = 1.5
+
 [node name="Tile" type="StaticBody3D" groups=["Tile"]]
 script = ExtResource("1_64qnr")
+healthyColor = Color(0.239216, 0.454902, 0.239216, 1)
+unhealthyColor = Color(0.145098, 0, 0.0941176, 1)
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_1wqv5")
@@ -19,3 +26,16 @@ skeleton = NodePath("../..")
 
 [node name="Shape" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_tateg")
+
+[node name="Influence" type="Area3D" parent="."]
+
+[node name="Sphere" type="CollisionShape3D" parent="Influence"]
+shape = SubResource("SphereShape3D_dpk3h")
+
+[node name="DebugPollution" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.608642, 0)
+billboard = 1
+text = "0.0"
+
+[connection signal="body_entered" from="Influence" to="." method="UpdateArea" binds= [true]]
+[connection signal="body_exited" from="Influence" to="." method="UpdateArea" binds= [false]]
