@@ -26,9 +26,12 @@ func UpdateArea(body: Node3D, enter: bool):
             tilesInArea.erase(body)
 
 func SendPollution():
+    for objects in get_children():
+        if objects.is_in_group("Object"):
+            objects.OnTick()
+
     for tile in tilesInArea:
-        tile.gatheredPollution += ((directPollution / 1.5) + (indirectPollution / 4.0)) * (2 - position.distance_to(tile.position))
-        
+        tile.gatheredPollution += ((directPollution / 1.5) + (indirectPollution / 5.0)) * (2 - position.distance_to(tile.position))
 
 func ApplyIndirect():
     indirectPollution += gatheredPollution * 0.05

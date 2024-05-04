@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b1ir6qxyx0bc"]
+[gd_scene load_steps=15 format=3 uid="uid://b1ir6qxyx0bc"]
 
 [ext_resource type="Script" path="res://Scripts/Game/GameScene.gd" id="1_5uuef"]
 [ext_resource type="Script" path="res://Scripts/Menus/Pause.gd" id="2_dslxd"]
@@ -9,6 +9,7 @@
 [ext_resource type="Material" uid="uid://cce82tpone5t1" path="res://Resources/Materials/select.tres" id="6_51g8b"]
 [ext_resource type="Script" path="res://Scripts/Game/HUD.gd" id="6_lk4ri"]
 [ext_resource type="PackedScene" uid="uid://6l6ywq8ju052" path="res://Nodes/Game/tile.tscn" id="7_hclv6"]
+[ext_resource type="Script" path="res://Scripts/Game/Tree.gd" id="9_5l1kd"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_0v1by"]
 height = 0.5
@@ -18,7 +19,18 @@ background_mode = 1
 background_color = Color(0, 0.807843, 0.905882, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.47451, 0.47451, 0.47451, 1)
-tonemap_mode = 2
+tonemap_mode = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cccp3"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0, 0.392157, 0, 1)
+metallic_specular = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_xyqoy"]
+material = SubResource("StandardMaterial3D_cccp3")
+radius = 0.25
+height = 0.8
 
 [node name="GameScene" type="Node"]
 script = ExtResource("1_5uuef")
@@ -101,6 +113,110 @@ shadow_enabled = true
 
 [node name="Env" type="WorldEnvironment" parent="Game/World"]
 environment = SubResource("Environment_jfl3x")
+
+[node name="Tiles" type="Node3D" parent="Game/World"]
+
+[node name="Tile" parent="Game/World/Tiles" instance=ExtResource("7_hclv6")]
+
+[node name="Tree" type="Node3D" parent="Game/World/Tiles/Tile" groups=["Object"]]
+script = ExtResource("9_5l1kd")
+
+[node name="Mesh" type="MeshInstance3D" parent="Game/World/Tiles/Tile/Tree"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("SphereMesh_xyqoy")
+
+[node name="Tile2" parent="Game/World/Tiles" instance=ExtResource("7_hclv6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Tile3" parent="Game/World/Tiles" instance=ExtResource("7_hclv6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+
+[node name="Tile4" parent="Game/World/Tiles" instance=ExtResource("7_hclv6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Tile5" parent="Game/World/Tiles" instance=ExtResource("7_hclv6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="Tile6" parent="Game/World/Tiles" instance=ExtResource("7_hclv6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 2)
+
+[node name="Tile7" parent="Game/World/Tiles" instance=ExtResource("7_hclv6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="Tile8" parent="Game/World/Tiles" instance=ExtResource("7_hclv6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
+
+[node name="Tile9" parent="Game/World/Tiles" instance=ExtResource("7_hclv6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="Tile10" parent="Game/World/Tiles" instance=ExtResource("7_hclv6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1)
+
+[node name="Tile11" parent="Game/World/Tiles" instance=ExtResource("7_hclv6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
+
+[node name="Tile12" parent="Game/World/Tiles" instance=ExtResource("7_hclv6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="Tile13" parent="Game/World/Tiles" instance=ExtResource("7_hclv6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+
+[node name="Tile14" parent="Game/World/Tiles" instance=ExtResource("7_hclv6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1)
+
+[node name="Tile15" parent="Game/World/Tiles" instance=ExtResource("7_hclv6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="Tile16" parent="Game/World/Tiles" instance=ExtResource("7_hclv6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+
+[node name="Tile17" parent="Game/World/Tiles" instance=ExtResource("7_hclv6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1)
+
+[node name="Tile18" parent="Game/World/Tiles" instance=ExtResource("7_hclv6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 1)
+
+[node name="Tile19" parent="Game/World/Tiles" instance=ExtResource("7_hclv6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+
+[node name="Tile20" parent="Game/World/Tiles" instance=ExtResource("7_hclv6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 2)
+
+[node name="Tile21" parent="Game/World/Tiles" instance=ExtResource("7_hclv6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -2)
+
+[node name="Tile22" parent="Game/World/Tiles" instance=ExtResource("7_hclv6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+
+[node name="Tile23" parent="Game/World/Tiles" instance=ExtResource("7_hclv6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="Tile24" parent="Game/World/Tiles" instance=ExtResource("7_hclv6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -2)
+
+[node name="Tile25" parent="Game/World/Tiles" instance=ExtResource("7_hclv6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="Tile26" parent="Game/World/Tiles" instance=ExtResource("7_hclv6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -4)
+
+[node name="Tile27" parent="Game/World/Tiles" instance=ExtResource("7_hclv6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -3)
+
+[node name="Tile28" parent="Game/World/Tiles" instance=ExtResource("7_hclv6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -3)
+
+[node name="Tile29" parent="Game/World/Tiles" instance=ExtResource("7_hclv6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -3)
+
+[node name="Tile30" parent="Game/World/Tiles" instance=ExtResource("7_hclv6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -3)
+
+[node name="Tile31" parent="Game/World/Tiles" instance=ExtResource("7_hclv6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+
+[node name="Tile32" parent="Game/World/Tiles" instance=ExtResource("7_hclv6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
 
 [node name="HUD" type="CanvasLayer" parent="Game"]
 layer = 5

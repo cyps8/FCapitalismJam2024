@@ -4,7 +4,10 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gkaye"]
 resource_local_to_scene = true
+diffuse_mode = 3
+specular_mode = 1
 albedo_color = Color(0.239216, 0.454902, 0.239216, 1)
+metallic_specular = 0.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_1wqv5"]
 resource_local_to_scene = true
@@ -18,7 +21,7 @@ radius = 1.5
 [node name="Tile" type="StaticBody3D" groups=["Tile"]]
 script = ExtResource("1_64qnr")
 healthyColor = Color(0.239216, 0.454902, 0.239216, 1)
-unhealthyColor = Color(0.145098, 0, 0.0941176, 1)
+unhealthyColor = Color(0.25098, 0, 0.172549, 1)
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_1wqv5")
@@ -35,6 +38,7 @@ shape = SubResource("SphereShape3D_dpk3h")
 [node name="DebugPollution" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.608642, 0)
 billboard = 1
+no_depth_test = true
 text = "0.0"
 
 [connection signal="body_entered" from="Influence" to="." method="UpdateArea" binds= [true]]

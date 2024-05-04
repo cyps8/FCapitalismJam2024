@@ -16,13 +16,15 @@ func _init():
 func _ready():
 	select = $Select
 	select.visible = false
-	for i in range(15):
-		for j in range(15):
-			var tile = tileIns.instantiate()
-			tile.position = Vector3(i, 0, j)
-			add_child(tile)
-			tilesInWorld.append(tile)
-	Cam.ins.Focus(Vector3(7, 0, 7), false)
+	for tile in $Tiles.get_children():
+		tilesInWorld.append(tile)
+	# for i in range(15):
+	# 	for j in range(15):
+	# 		var tile = tileIns.instantiate()
+	# 		tile.position = Vector3(i, 0, j)
+	# 		$Tiles.add_child(tile)
+	# 		tilesInWorld.append(tile)
+	# Cam.ins.Focus(Vector3(7, 0, 7), false)
 
 func _process(dt):
 	var tile = SelectRay()
