@@ -1,0 +1,12 @@
+[gd_resource type="QuadMesh" load_steps=3 format=3 uid="uid://b77k0nxo3686l"]
+
+[ext_resource type="Texture2D" uid="uid://b7v78bdyx2110" path="res://Assets/Art/Textures/grass_UV.png" id="1_rs4dk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g5cog"]
+transparency = 1
+albedo_texture = ExtResource("1_rs4dk")
+roughness = 0.84
+
+[resource]
+lightmap_size_hint = Vector2i(7, 7)
+material = SubResource("StandardMaterial3D_g5cog")

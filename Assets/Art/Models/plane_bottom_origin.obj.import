@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ya1euch00b51"
+path="res://.godot/imported/plane_bottom_origin.obj-72b9b305f71c986b2915bc5a9d24c24c.mesh"
+
+[deps]
+
+files=["res://.godot/imported/plane_bottom_origin.obj-72b9b305f71c986b2915bc5a9d24c24c.mesh"]
+
+source_file="res://Assets/Art/Models/plane_bottom_origin.obj"
+dest_files=["res://.godot/imported/plane_bottom_origin.obj-72b9b305f71c986b2915bc5a9d24c24c.mesh", "res://.godot/imported/plane_bottom_origin.obj-72b9b305f71c986b2915bc5a9d24c24c.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
