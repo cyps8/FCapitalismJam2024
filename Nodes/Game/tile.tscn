@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://6l6ywq8ju052"]
+
+[ext_resource type="Script" path="res://Scripts/Game/Tile.gd" id="1_64qnr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gkaye"]
+albedo_color = Color(0.239216, 0.454902, 0.239216, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1wqv5"]
+material = SubResource("StandardMaterial3D_gkaye")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tateg"]
+
+[node name="Tile" type="StaticBody3D" groups=["Tile"]]
+script = ExtResource("1_64qnr")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_1wqv5")
+skeleton = NodePath("../..")
+
+[node name="Shape" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_tateg")

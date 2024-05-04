@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cce82tpone5t1"]
+
+[ext_resource type="Shader" path="res://Scripts/Shaders/Select.gdshader" id="1_jj50t"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_jj50t")
+shader_parameter/albedo = Color(1, 1, 0, 1)
+shader_parameter/count = 2.0
+shader_parameter/line_width = 1.0
+shader_parameter/speed = 0.8
